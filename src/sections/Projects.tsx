@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { FiExternalLink, FiGithub } from "react-icons/fi";
+import { FiGithub } from "react-icons/fi";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card } from "@/components/ui/Card";
 import { TiltCard } from "@/components/ui/TiltCard";
@@ -42,7 +42,7 @@ export function Projects() {
                       {project.category}
                     </span>
 
-                    <div className="absolute bottom-4 right-4 flex translate-y-4 gap-2 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                    <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 translate-y-4 gap-2 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
                       <a
                         href={project.github}
                         target="_blank"
@@ -53,18 +53,6 @@ export function Projects() {
                       >
                         <FiGithub size={16} />
                       </a>
-                      {project.demo && (
-                        <a
-                          href={project.demo}
-                          target="_blank"
-                          rel="noreferrer"
-                          data-cursor-hover
-                          aria-label="View live demo"
-                          className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md transition-colors hover:bg-cyan"
-                        >
-                          <FiExternalLink size={16} />
-                        </a>
-                      )}
                     </div>
                   </div>
 
@@ -87,7 +75,7 @@ export function Projects() {
                       ))}
                     </div>
 
-                    <div className="mt-5 flex items-center gap-4 border-t border-white/10 pt-5">
+                    <div className="mt-5 border-t border-white/10 pt-5">
                       <div>
                         <p className="heading-font text-lg font-bold gradient-text">
                           {project.metrics[0].value}
@@ -95,36 +83,15 @@ export function Projects() {
                         <p className="text-xs text-muted">{project.metrics[0].label}</p>
                       </div>
 
-                      <div className="ml-auto flex items-center gap-3">
-                        <a
-                          href={project.github}
-                          target="_blank"
-                          rel="noreferrer"
-                          data-cursor-hover
-                          className="flex items-center gap-1.5 text-sm font-medium text-accent-light transition-colors hover:text-cyan"
-                        >
-                          <FiGithub size={14} /> GitHub
-                        </a>
-
-                        {project.demo ? (
-                          <a
-                            href={project.demo}
-                            target="_blank"
-                            rel="noreferrer"
-                            data-cursor-hover
-                            className="flex items-center gap-1.5 text-sm font-medium text-cyan transition-colors hover:text-accent-light"
-                          >
-                            Live Demo <FiExternalLink size={14} />
-                          </a>
-                        ) : (
-                          <span
-                            aria-disabled="true"
-                            className="flex cursor-not-allowed items-center gap-1.5 text-sm font-medium text-muted/50"
-                          >
-                            Live Demo <FiExternalLink size={14} />
-                          </span>
-                        )}
-                      </div>
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noreferrer"
+                        data-cursor-hover
+                        className="mt-4 flex w-full items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-medium text-foreground transition-all duration-300 hover:border-accent/50 hover:bg-white/10 hover:text-cyan hover:shadow-glow"
+                      >
+                        <FiGithub size={15} /> View on GitHub
+                      </a>
                     </div>
                   </div>
                 </Card>

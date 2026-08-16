@@ -17,9 +17,9 @@ function StatCard({ stat, index }: { stat: (typeof stats)[number]; index: number
       transition={{ duration: 0.5, delay: index * 0.08 }}
       whileHover={{ y: -8 }}
     >
-      <Card className="group relative overflow-hidden p-7 text-center transition-all duration-300 hover:border-cyan/40 hover:shadow-glow-cyan">
+      <Card className="group relative overflow-hidden p-4 text-center transition-all duration-300 hover:border-cyan/40 hover:shadow-glow-cyan sm:p-7">
         <div className="pointer-events-none absolute -right-6 -top-6 h-24 w-24 rounded-full bg-accent/20 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
-        <p className="heading-font text-4xl font-extrabold gradient-text sm:text-5xl">
+        <p className="heading-font whitespace-nowrap text-xl font-extrabold gradient-text sm:text-2xl lg:text-base xl:text-2xl">
           {stat.prefix ?? ""}
           {stat.decimals ? count.toFixed(stat.decimals) : count.toLocaleString()}
           {stat.suffix}

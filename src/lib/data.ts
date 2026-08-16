@@ -55,47 +55,34 @@ export const skillCategories = [
   {
     title: "Programming",
     skills: [
-      { name: "Python", level: 92 },
-      { name: "SQL", level: 90 },
+      { name: "Python", detail: "6+ Projects" },
+      { name: "SQL", detail: "Advanced" },
     ],
   },
   {
-    title: "Data",
+    title: "Data Analytics",
     skills: [
-      { name: "Pandas", level: 90 },
-      { name: "NumPy", level: 85 },
-      { name: "PostgreSQL", level: 82 },
-      { name: "DuckDB", level: 80 },
-      { name: "MySQL", level: 78 },
+      { name: "Pandas", detail: "Data Analysis" },
+      { name: "NumPy", detail: "Data Processing" },
+      { name: "PostgreSQL", detail: "Database" },
+      { name: "DuckDB", detail: "Analytics" },
     ],
   },
   {
     title: "Machine Learning",
     skills: [
-      { name: "Scikit-learn", level: 85 },
-      { name: "LightGBM", level: 78 },
-      { name: "Predictive Analytics", level: 82 },
-      { name: "EDA", level: 90 },
+      { name: "Scikit-learn", detail: "Predictive Models" },
+      { name: "LightGBM", detail: "Fraud Detection" },
+      { name: "EDA", detail: "Statistical Analysis" },
     ],
   },
   {
     title: "Visualization",
     skills: [
-      { name: "Power BI", level: 88 },
-      { name: "Tableau", level: 75 },
-      { name: "Matplotlib", level: 85 },
-      { name: "Seaborn", level: 85 },
-      { name: "Recharts", level: 76 },
-    ],
-  },
-  {
-    title: "Tools",
-    skills: [
-      { name: "Git", level: 88 },
-      { name: "GitHub", level: 90 },
-      { name: "VS Code", level: 92 },
-      { name: "Streamlit", level: 80 },
-      { name: "React", level: 75 },
+      { name: "Power BI", detail: "Dashboard Expert" },
+      { name: "Matplotlib", detail: "Data Visualization" },
+      { name: "Seaborn", detail: "Analytics Charts" },
+      { name: "Recharts", detail: "Interactive Charts" },
     ],
   },
 ];
@@ -126,12 +113,12 @@ export const experience = [
 ];
 
 export const stats = [
-  { value: 3900, suffix: "+", label: "Customers Analyzed" },
   { value: 13.3, suffix: "M+", label: "Financial Transactions", decimals: 1 },
-  { value: 95.3, suffix: "%", label: "Fraud Recall", decimals: 1 },
-  { value: 35, suffix: "M+", label: "Revenue Analyzed", prefix: "₹" },
   { value: 172, suffix: "K+", label: "Supply Chain Records" },
-  { value: 6, suffix: "+", label: "Major Projects" },
+  { value: 35.05, suffix: "M", label: "Revenue Analyzed", prefix: "₹", decimals: 2 },
+  { value: 95.3, suffix: "%", label: "Fraud Recall", decimals: 1 },
+  { value: 3900, suffix: "", label: "Customers Analyzed" },
+  { value: 6, suffix: "+", label: "Featured Projects" },
 ];
 
 export type Project = {
@@ -142,7 +129,6 @@ export type Project = {
   tech: string[];
   metrics: { label: string; value: string }[];
   github: string;
-  demo?: string;
   accent: string;
   image: string;
 };
@@ -250,25 +236,4 @@ export const timeline = [
   { year: "2026", title: "Fraud Detection Platform", description: "Delivered a fraud detection system across 13.3M transactions." },
   { year: "2026", title: "KodNest Internship", description: "Data Science Intern focused on customer & revenue analytics." },
   { year: "2026", title: "DataCortex", description: "Launched an AI-powered Text-to-SQL analytics platform." },
-];
-
-export const testimonials = [
-  {
-    quote:
-      "Arfa has a rare instinct for finding the story hidden inside messy data. Her fraud detection work was rigorous, well-documented, and genuinely production-minded.",
-    name: "Senior Data Scientist",
-    role: "Project Collaborator",
-  },
-  {
-    quote:
-      "What stood out was her ownership — from raw SQL to a polished Power BI dashboard, she drove the entire analytics pipeline with care and precision.",
-    name: "Project Mentor",
-    role: "Internship Supervisor",
-  },
-  {
-    quote:
-      "A fast learner who pairs strong analytical fundamentals with real product sense. Her dashboards are as thoughtful as her models.",
-    name: "Analytics Lead",
-    role: "Technical Reviewer",
-  },
 ];

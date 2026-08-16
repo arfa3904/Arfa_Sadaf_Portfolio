@@ -4,7 +4,7 @@ Premium dark-themed developer portfolio built with React, TypeScript, Vite, and 
 
 ## Stack
 
-React 18 · TypeScript · Vite · Tailwind CSS · Framer Motion · GSAP (ScrollTrigger) · Lenis smooth scroll · Three.js (hero particle field) · Recharts · React Router · EmailJS
+React 18 · TypeScript · Vite · Tailwind CSS · Framer Motion · GSAP (ScrollTrigger) · Lenis smooth scroll · Three.js (hero particle field) · React Router
 
 ## Getting started
 
@@ -15,18 +15,9 @@ npm run build      # production build to dist/
 npm run preview    # preview the production build
 ```
 
-## Contact form (EmailJS)
+## Contact form
 
-The contact form sends via [EmailJS](https://www.emailjs.com/). Without credentials it falls back to opening the visitor's email client instead.
-
-1. Create an EmailJS account, an Email Service, and an Email Template with variables `from_name`, `from_email`, `subject`, `message`.
-2. Copy `.env.example` to `.env` and fill in:
-   ```
-   VITE_EMAILJS_SERVICE_ID=
-   VITE_EMAILJS_TEMPLATE_ID=
-   VITE_EMAILJS_PUBLIC_KEY=
-   ```
-3. Restart the dev server.
+The contact form validates input client-side, then opens the visitor's default email client via a `mailto:` link addressed to `sadafarfa147@gmail.com`, pre-filled with the subject, name, email, and message.
 
 ## Assets
 
@@ -40,7 +31,7 @@ src/
   components/    # ui/, layout/, three/ — reusable building blocks
   sections/      # one file per landing-page section
   hooks/         # useLenis, useCounter, useActiveSection, ...
-  lib/           # data.ts (all content), utils.ts, emailConfig.ts
+  lib/           # data.ts (all content), utils.ts
   pages/         # Home.tsx assembles all sections
 ```
 

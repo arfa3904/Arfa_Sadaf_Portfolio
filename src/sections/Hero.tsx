@@ -51,7 +51,7 @@ export function Hero() {
             <span className="ml-1 h-6 w-[2px] animate-blink bg-cyan" />
           </div>
 
-          <p className="max-w-xl text-balance text-base leading-relaxed text-muted sm:text-lg">
+          <p className="max-w-[520px] text-balance text-[17px] leading-[1.8] text-muted sm:text-[18px]">
             {personal.tagline}
           </p>
 

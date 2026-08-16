@@ -1,12 +1,10 @@
 import { useState, type FormEvent } from "react";
 import { motion } from "framer-motion";
-import emailjs from "@emailjs/browser";
-import { FiCheckCircle, FiGithub, FiLinkedin, FiLoader, FiMail, FiPhone, FiSend } from "react-icons/fi";
+import { FiCheckCircle, FiGithub, FiLinkedin, FiMail, FiPhone, FiSend } from "react-icons/fi";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { personal } from "@/lib/data";
-import { emailConfig, isEmailConfigured } from "@/lib/emailConfig";
 import { cn } from "@/lib/utils";
 
 type FormState = {
@@ -41,47 +39,29 @@ function validate(form: FormState): FormErrors {
 export function Contact() {
   const [form, setForm] = useState<FormState>(initialForm);
   const [errors, setErrors] = useState<FormErrors>({});
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "success">("idle");
 
   function handleChange(field: keyof FormState, value: string) {
     setForm((f) => ({ ...f, [field]: value }));
     setErrors((e) => ({ ...e, [field]: undefined }));
   }
 
-  async function handleSubmit(e: FormEvent) {
+  function handleSubmit(e: FormEvent) {
     e.preventDefault();
     const validationErrors = validate(form);
     setErrors(validationErrors);
     if (Object.keys(validationErrors).length > 0) return;
 
-    setStatus("loading");
+    const body = `Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`;
+    const mailtoLink = `mailto:${personal.email}?subject=${encodeURIComponent(
+      form.subject
+    )}&body=${encodeURIComponent(body)}`;
 
-    try {
-      if (!isEmailConfigured) {
-        throw new Error("EmailJS not configured");
-      }
-      await emailjs.send(
-        emailConfig.serviceId,
-        emailConfig.templateId,
-        {
-          from_name: form.name,
-          from_email: form.email,
-          subject: form.subject,
-          message: form.message,
-          to_email: personal.email,
-        },
-        { publicKey: emailConfig.publicKey }
-      );
-      setStatus("success");
-      setForm(initialForm);
-      setTimeout(() => setStatus("idle"), 4000);
-    } catch {
-      window.location.href = `mailto:${personal.email}?subject=${encodeURIComponent(
-        form.subject || "Portfolio inquiry"
-      )}&body=${encodeURIComponent(`${form.message}\n\n— ${form.name} (${form.email})`)}`;
-      setStatus("error");
-      setTimeout(() => setStatus("idle"), 4000);
-    }
+    window.location.href = mailtoLink;
+
+    setStatus("success");
+    setForm(initialForm);
+    setTimeout(() => setStatus("idle"), 4000);
   }
 
   const fields: { name: keyof FormState; label: string; type: string; placeholder: string }[] = [
@@ -196,17 +176,8 @@ export function Contact() {
                   {errors.message && <p className="mt-1.5 text-xs text-red-400">{errors.message}</p>}
                 </div>
 
-                <Button
-                  type="submit"
-                  disabled={status === "loading"}
-                  className="w-full sm:w-auto"
-                  data-cursor-hover
-                >
-                  {status === "loading" ? (
-                    <>
-                      <FiLoader className="animate-spin" /> Sending...
-                    </>
-                  ) : status === "success" ? (
+                <Button type="submit" className="w-full sm:w-auto" data-cursor-hover>
+                  {status === "success" ? (
                     <>
                       <FiCheckCircle /> Message Sent
                     </>
@@ -218,11 +189,8 @@ export function Contact() {
                 </Button>
 
                 {status === "success" && (
-                  <p className="text-sm text-emerald-400">Thanks for reaching out — I'll reply soon!</p>
-                )}
-                {status === "error" && (
-                  <p className="text-sm text-amber-400">
-                    Opening your email client instead — direct send isn't configured yet.
+                  <p className="text-sm text-emerald-400">
+                    Opening your email client — thanks for reaching out!
                   </p>
                 )}
               </form>

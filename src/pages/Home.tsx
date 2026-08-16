@@ -7,7 +7,6 @@ import { Experience } from "@/sections/Experience";
 import { Stats } from "@/sections/Stats";
 import { Projects } from "@/sections/Projects";
 import { Timeline } from "@/sections/Timeline";
-import { Testimonials } from "@/sections/Testimonials";
 import { Contact } from "@/sections/Contact";
 
 export function Home() {
@@ -22,7 +21,6 @@ export function Home() {
         <Stats />
         <Projects />
         <Timeline />
-        <Testimonials />
         <Contact />
       </main>
       <Footer />
