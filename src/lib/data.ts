@@ -8,7 +8,7 @@ export const personal = {
     "Business Intelligence Developer",
   ],
   tagline:
-    "Entry-level Data Analyst specializing in Python, SQL, Machine Learning, and interactive business intelligence dashboards. Passionate about transforming complex data into actionable insights through analytics and beautiful visualizations.",
+    "Artificial Intelligence & Data Science graduate skilled in Python, SQL, Power BI, Machine Learning, and Business Intelligence. Passionate about designing data-driven solutions, developing interactive dashboards, and building intelligent applications that transform complex data into actionable insights and real-world impact.",
   location: "Karnataka, India",
   email: "sadafarfa147@gmail.com",
   phone: "+91 9353367368",
